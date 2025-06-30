@@ -14,9 +14,6 @@ Sebuah bot sederhana untuk mengirim pesan WhatsApp secara otomatis berdasarkan d
 <img src="https://img.shields.io/badge/Selenium-4-green?style=for-the-badge&logo=selenium" alt="Selenium">
 <img src="https://img.shields.io/badge/Pandas-2-purple?style=for-the-badge&logo=pandas" alt="Pandas">
 <br>
-<img src="https://img.shields.io/github/license/USERNAME/REPO?style=for-the-badge" alt="License">
-<img src="https://img.shields.io/github/last-commit/USERNAME/REPO?style=for-the-badge" alt="Last Commit">
-<img src="https://img.shields.io/github/stars/USERNAME/REPO?style=social" alt="Stars">
 </p>
 
 PENTING: Jangan lupa mengganti USERNAME/REPO pada URL di atas dengan username dan nama repository GitHub Anda agar badge dapat berfungsi.
