@@ -1,0 +1,9 @@
+# Folder virtual environment Python
+.venv/
+
+# Folder profil Chrome untuk automation
+chrome_profile_whatsapp/
+
+# Opsional: File-file umum Python yang biasa diabaikan
+__pycache__/
+*.pyc
