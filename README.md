@@ -1,127 +1,261 @@
-<div align="center">
+# WhatsApp Auto Sender 📱
 
-<h1 align="center">🤖 Bot Pengirim Pesan WhatsApp 🤖</h1>
-<p align="center">
-Sebuah bot sederhana untuk mengirim pesan WhatsApp secara otomatis berdasarkan data dari file Excel.
-<br />
-<a href="https://github.com/USERNAME/REPO/issues">Laporkan Bug</a>
-·
-<a href="https://github.com/USERNAME/REPO/issues">Minta Fitur Baru</a>
-</p>
+Aplikasi otomatis untuk mengirim pesan WhatsApp secara massal menggunakan WhatsApp Web dengan dukungan pengiriman gambar dan teks.
 
-<p align="center">
-<img src="https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&logo=python" alt="Python Version">
-<img src="https://img.shields.io/badge/Selenium-4-green?style=for-the-badge&logo=selenium" alt="Selenium">
-<img src="https://img.shields.io/badge/Pandas-2-purple?style=for-the-badge&logo=pandas" alt="Pandas">
-<br>
-</p>
+## ✨ Fitur Utama
 
-PENTING: Jangan lupa mengganti USERNAME/REPO pada URL di atas dengan username dan nama repository GitHub Anda agar badge dapat berfungsi.
+- 🔄 **Pengiriman Massal**: Kirim pesan ke banyak nomor sekaligus
+- 📸 **Dukungan Gambar**: Kirim gambar dengan caption
+- 💾 **Profile Persisten**: Tidak perlu scan QR code berulang kali
+- 📊 **Excel Integration**: Baca data dari file Excel
+- 🛡️ **Multiple Fallback**: Berbagai metode upload gambar untuk kompatibilitas maksimal
+- 🔧 **Mode Manual**: Opsi manual jika otomatis gagal
+- ⚡ **Robust Error Handling**: Penanganan error yang komprehensif
 
-</div>
+## 🚀 Cara Instalasi
 
-🧐 Tentang Proyek
-Proyek ini adalah sebuah skrip otomasi yang berfungsi untuk:
+### Prasyarat
+- Python 3.7 atau lebih baru
+- Google Chrome Browser (versi terbaru)
+- Koneksi internet yang stabil
 
-Membaca daftar kontak (nama, nomor) dan isi pesan dari sebuah file Excel (data_pesan.xlsx).
+### Langkah Instalasi
 
-Menggunakan Selenium untuk membuka WhatsApp Web di Google Chrome.
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/username/whatsapp-auto-sender.git
+   cd whatsapp-auto-sender
+   ```
 
-Menyimpan sesi login ke dalam folder chrome_profile_whatsapp agar Anda tidak perlu scan QR code berulang kali.
+2. **Buat Virtual Environment**
+   ```bash
+   python -m venv .venv
+   ```
 
-Mengirimkan pesan ke setiap kontak satu per satu sesuai data di Excel.
+3. **Aktivasi Virtual Environment**
+   
+   **Windows:**
+   ```bash
+   .venv\Scripts\activate
+   ```
+   
+   **Mac/Linux:**
+   ```bash
+   source .venv/bin/activate
+   ```
 
-<br>
-<div align="center">
-<em>Tampilan struktur file dalam proyek:</em><br><br>
-<img src="https://i.imgur.com/lO3i1QP.png" alt="[Struktur File Proyek]" width="400">
-</div>
-<br>
+4. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Dibangun Dengan
-Berikut adalah beberapa library utama yang digunakan dalam proyek ini:
+## 📋 Persiapan Data
 
-[][Selenium-url]
+Buat file Excel dengan nama `data_pesan.xlsx` dengan struktur berikut:
 
-[][Pandas-url]
+| Nomor WhatsApp | Pesan | Gambar (opsional) |
+|----------------|-------|-------------------|
+| 628123456789 | Halo, ini pesan otomatis | gambar1.jpg |
+| 628987654321 | Selamat pagi! | |
+| 628111222333 | Promo spesial hari ini! | promo.png |
 
-[][Openpyxl-url]
+### Format Data:
+- **Nomor WhatsApp**: Nomor dengan kode negara (contoh: 628123456789 untuk Indonesia)
+- **Pesan**: Teks pesan yang akan dikirim
+- **Gambar**: Path/nama file gambar (opsional, kosongkan jika hanya kirim teks)
 
-[][Webdriver-Manager-url]
+### Format Gambar yang Didukung:
+- JPG/JPEG
+- PNG
+- GIF
+- BMP
+- WEBP
 
-🏁 Memulai
-Untuk menjalankan salinan lokal, ikuti langkah-langkah sederhana berikut.
+## 🎯 Cara Penggunaan
 
-Prasyarat
-Sebelum memulai, pastikan Anda sudah memiliki:
+### Metode 1: Jalankan dengan Batch File (Windows)
+```bash
+double-click run.bat
+```
 
-Python 3.9 atau yang lebih baru
-
-Browser Google Chrome yang ter-install di komputer Anda
-
-Instalasi
-Clone repository ini (Ganti USERNAME/REPO dengan milik Anda)
-
-git clone https://github.com/USERNAME/REPO.git
-
-Masuk ke direktori proyek
-
-cd NAMA-FOLDER-PROYEK
-
-Buat dan aktifkan Virtual Environment (Sangat disarankan)
-
-# Membuat venv
-python -m venv .venv
-
-# Aktivasi di Windows
-.\.venv\Scripts\activate
-
-# Aktivasi di MacOS/Linux
-source .venv/bin/activate
-
-Install semua library yang dibutuhkan dari requirements.txt
-
-pip install -r requirements.txt
-
-Isi data kontak Anda <br>
-Buka file data_pesan.xlsx dan isi kolom nama, nomor (dengan format internasional, contoh: 6281234567890), dan pesan.
-
-Login Pertama Kali (Scan QR) <br>
-Jalankan skrip untuk pertama kali agar sesi login tersimpan.
-
+### Metode 2: Jalankan dengan Python
+```bash
 python sendMessage.py
+```
 
-Sebuah jendela Chrome akan terbuka. Scan kode QR yang muncul menggunakan aplikasi WhatsApp di HP Anda. Setelah berhasil login, sesi akan otomatis tersimpan. Anda bisa menutup program jika sudah.
+### Metode 3: Jalankan dengan Virtual Environment
+```bash
+.venv\Scripts\python.exe sendMessage.py
+```
 
-🎈 Penggunaan
-Setelah instalasi dan login pertama berhasil, Anda bisa menjalankan bot dengan cara:
+## 📖 Panduan Penggunaan Lengkap
 
-Pengguna Windows (Cara Mudah): Cukup klik dua kali file run.bat.
+### 1. Setup Awal
+- Jalankan aplikasi untuk pertama kali
+- Browser Chrome akan terbuka secara otomatis
+- Scan QR code WhatsApp Web dengan HP Anda
+- **Penting**: Centang "Keep me signed in" jika tersedia
+- Profile akan disimpan untuk penggunaan selanjutnya
 
-Semua Sistem Operasi: Jalankan perintah berikut di terminal Anda (pastikan virtual environment sudah aktif).
+### 2. Pengiriman Pesan
+- Aplikasi akan membaca file `data_pesan.xlsx`
+- Proses pengiriman dimulai secara otomatis
+- Jeda 10 detik antar pesan untuk menghindari spam detection
+- Log detail akan ditampilkan di console
 
-python sendMessage.py
+### 3. Mode Manual (Fallback)
+Jika upload gambar otomatis gagal, aplikasi akan memberikan instruksi manual:
+- Klik tombol attachment di browser
+- Pilih file gambar yang diminta
+- Tambahkan caption jika diperlukan  
+- Klik send
 
-Bot akan mulai mengirim pesan sesuai daftar di file Excel, dan progresnya akan ditampilkan di terminal.
+## 🔧 Konfigurasi Advanced
 
-⚠️ Peringatan (Disclaimer)
-Gunakan tool ini dengan bijak. Pengiriman pesan massal dalam jumlah besar dan dalam waktu cepat dapat dianggap sebagai aktivitas spam oleh pihak WhatsApp dan berisiko tinggi membuat nomor Anda diblokir secara permanen. Pengembang tidak bertanggung jawab atas segala konsekuensi yang timbul dari penggunaan skrip ini.
+### Mengubah Jeda Waktu
+Edit file `sendMessage.py` pada baris:
+```python
+time.sleep(10)  # Ubah angka 10 sesuai kebutuhan (dalam detik)
+```
 
-📄 Lisensi
-Didistribusikan di bawah Lisensi MIT. Lihat LICENSE.txt (jika ada) untuk informasi lebih lanjut.
+### Mengubah Lokasi Profile Chrome
+Edit variabel `chrome_profile_dir` di fungsi `create_driver()`:
+```python
+chrome_profile_dir = os.path.join(script_dir, "chrome_profile_whatsapp")
+```
 
-☎️ Kontak
-[NAMA ANDA] - [@akun_twitter_anda] - email@anda.com
+## 🛠️ Troubleshooting
 
-Link Proyek: https://github.com/USERNAME/REPO
+### Masalah Umum dan Solusi
 
-<!-- MARKDOWN LINKS & IMAGES -->
+#### 1. WebDriver Error
+```
+Gagal membuat WebDriver!
+```
+**Solusi:**
+- Jalankan Command Prompt sebagai Administrator
+- Update Google Chrome ke versi terbaru
+- Restart komputer
+- Hapus folder `chrome_profile_whatsapp` jika ada
 
-[]: #
-[selenium-url]: https://www.google.com/search?q=%5Bhttps://www.selenium.dev/%5D(https://www.selenium.dev/)
-[]: #
-[pandas-url]: https://www.google.com/search?q=%5Bhttps://pandas.pydata.org/%5D(https://pandas.pydata.org/)
-[]: #
-[openpyxl-url]: https://www.google.com/search?q=%5Bhttps://openpyxl.readthedocs.io/en/stable/%5D(https://openpyxl.readthedocs.io/en/stable/)
-[]: #
-[webdriver-manager-url]: https://www.google.com/search?q=%5Bhttps://github.com/SergeyPirogov/webdriver_manager%5D(https://github.com/SergeyPirogov/webdriver_manager)
+#### 2. QR Code Tidak Muncul
+**Solusi:**
+- Refresh halaman browser
+- Hapus folder `chrome_profile_whatsapp`
+- Jalankan ulang aplikasi
+
+#### 3. Gambar Tidak Terupload
+**Solusi:**
+- Pastikan file gambar ada di folder yang benar
+- Cek format file gambar (harus JPG, PNG, GIF, BMP, atau WEBP)
+- Gunakan mode manual jika otomatis gagal
+
+#### 4. Nomor Tidak Valid
+```
+Nomor 628123456789 tidak valid
+```
+**Solusi:**
+- Pastikan nomor dimulai dengan kode negara
+- Hapus spasi, tanda hubung, atau karakter khusus
+- Pastikan nomor terdaftar di WhatsApp
+
+### Error Logs
+Aplikasi akan menampilkan log detail di console. Perhatikan pesan:
+- ✅ Sukses
+- ⚠️ Warning
+- ❌ Error
+
+## 📁 Struktur Folder
+
+```
+whatsapp-auto-sender/
+├── sendMessage.py          # Script utama
+├── run.bat                 # Batch file untuk Windows
+├── requirements.txt        # Dependencies
+├── data_pesan.xlsx        # File data (buat sendiri)
+├── chrome_profile_whatsapp/ # Profile Chrome (otomatis)
+├── gambar1.jpg            # Contoh gambar
+├── gambar2.png            # Contoh gambar
+└── README.md              # Dokumentasi ini
+```
+
+## 🔒 Keamanan dan Privasi
+
+### Penting untuk Diperhatikan:
+- **Jangan share profile Chrome** dengan orang lain
+- **Gunakan nomor yang valid** dan sudah memberikan consent
+- **Patuhi kebijakan WhatsApp** tentang penggunaan otomatis
+- **Jangan spam** - gunakan jeda waktu yang wajar
+- **Backup data** secara berkala
+
+### Rekomendasi Keamanan:
+- Gunakan di komputer pribadi
+- Logout WhatsApp Web setelah selesai
+- Jangan tinggalkan aplikasi berjalan tanpa pengawasan
+
+## 🤝 Contributing
+
+Kami menerima kontribusi! Silakan:
+
+1. Fork repository ini
+2. Buat branch baru (`git checkout -b feature/fitur-baru`)
+3. Commit perubahan (`git commit -am 'Tambah fitur baru'`)
+4. Push ke branch (`git push origin feature/fitur-baru`)
+5. Buat Pull Request
+
+### Pedoman Kontribusi:
+- Ikuti coding style yang ada
+- Tambahkan dokumentasi untuk fitur baru
+- Test semua perubahan sebelum submit
+- Gunakan commit message yang jelas
+
+## 📝 Changelog
+
+### v2.0.0 (Latest)
+- ✅ Dukungan upload gambar dengan multiple fallback methods
+- ✅ Profile Chrome persisten
+- ✅ Improved error handling
+- ✅ Mode manual untuk fallback
+- ✅ Detailed logging
+
+### v1.0.0
+- ✅ Pengiriman pesan teks massal
+- ✅ Integrasi Excel
+- ✅ Basic error handling
+
+## 📞 Support
+
+Jika mengalami masalah:
+
+1. **Cek FAQ** di atas terlebih dahulu
+2. **Buka Issue** di GitHub dengan detail:
+   - Versi Python
+   - Versi Chrome
+   - Error message lengkap
+   - Langkah yang sudah dicoba
+
+## ⚖️ Disclaimer
+
+- Aplikasi ini untuk tujuan edukasi dan otomasi legitimate
+- Pengguna bertanggung jawab atas penggunaan aplikasi
+- Patuhi Terms of Service WhatsApp
+- Jangan gunakan untuk spam atau aktivitas ilegal
+
+## 📄 License
+
+MIT License - Silakan gunakan dengan bebas untuk keperluan personal maupun komersial.
+
+## 🙏 Acknowledgments
+
+- [Selenium](https://selenium.dev/) - Web automation framework
+- [Pandas](https://pandas.pydata.org/) - Data manipulation library
+- [WebDriver Manager](https://github.com/SergeyPirogov/webdriver_manager) - Automatic driver management
+- [OpenPyXL](https://openpyxl.readthedocs.io/) - Excel file handling
+
+---
+
+### 📧 Kontak
+
+Untuk pertanyaan atau saran, silakan buka issue di GitHub repository ini.
+
+**Happy Automating! 🚀**
